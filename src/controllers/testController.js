@@ -11,6 +11,7 @@ const startTest = async (req, res) => {
     const questions = await Question.findAll({
       limit: numQuestions,
       order: sequelize.random(),
+      attributes: { exclude: ["right_answer"] },
     });
 
     if (questions.length < numQuestions) {
